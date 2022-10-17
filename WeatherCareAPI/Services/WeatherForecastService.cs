@@ -1,6 +1,8 @@
 ﻿using WeatherCareAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using WeatherCareAPI.Models.Json;
 
 namespace WeatherCareAPI.Services
 {
@@ -18,5 +20,6 @@ namespace WeatherCareAPI.Services
             var cities = _context.CityInfo.ToList();
             return cities;
         }
+
     }
 }
