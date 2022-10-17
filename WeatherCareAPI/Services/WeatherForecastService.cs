@@ -21,5 +21,14 @@ namespace WeatherCareAPI.Services
             return cities;
         }
 
+        public Forecast GetLocationByCity(string cityName)
+        {
+            Forecast location = new Forecast();
+            var city = GetAllCities().Where(city => city.EnglishName.ToLower()==cityName.ToLower()).First();
+
+            location.latitude = city.GeoPositionLatitude;
+            location.longitude = city.GeoPositionLongitude;
+            return location;
+        }
     }
 }

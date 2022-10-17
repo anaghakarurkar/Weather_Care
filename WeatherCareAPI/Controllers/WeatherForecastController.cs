@@ -19,14 +19,21 @@ namespace WeatherCareAPI.Controllers
             _weatherForecastService = weatherForecastService;
         }
 
-        [HttpGet("/Daily/{cityName}")]
+        [HttpGet("/daily/{cityName}")]
         public ActionResult<IEnumerable<ForecastDaily>> GetDailyForecastByCity(string cityName)
         {
-            var foreCastDaily = ImportFromApi.ImportForecastDaily("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum").GetAwaiter().GetResult();
+            Forecast location = _weatherForecastService.GetLocationByCity(cityName);
+            var foreCastDaily = ImportFromApi.ImportForecastDaily($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum").GetAwaiter().GetResult();
             return Ok(foreCastDaily);
         }
 
-
+        [HttpGet("/hourly/{cityName}")]
+        public ActionResult<IEnumerable<ForecastHourly>> GetHourlyForecastByCity(string cityName)
+        {
+            Forecast location = _weatherForecastService.GetLocationByCity(cityName);
+            var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
+            return Ok(foreCastHourly);
+        }
 
         [HttpGet("DB")]
         public ActionResult<IEnumerable<City>> GetCities()
