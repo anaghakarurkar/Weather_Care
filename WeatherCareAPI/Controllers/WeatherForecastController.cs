@@ -19,15 +19,12 @@ namespace WeatherCareAPI.Controllers
             _weatherForecastService = weatherForecastService;
         }
 
-        [HttpGet("{cityName}")]
-        [Route("/Daily")]
+        [HttpGet("/Daily/{cityName}")]
         public ActionResult<IEnumerable<ForecastDaily>> GetDailyForecastByCity(string cityName)
         {
-            var foreCastDaily = ImportFromApi.ImportForecastDaily("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum");
-            
+            var foreCastDaily = ImportFromApi.ImportForecastDaily("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum").GetAwaiter().GetResult();
             return Ok(foreCastDaily);
         }
-
 
 
 
