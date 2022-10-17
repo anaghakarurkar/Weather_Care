@@ -39,13 +39,19 @@ namespace WeatherCareAPI.Tests
         {
             var forecast = ImportFromApi.ImportForecastDaily(url).GetAwaiter().GetResult();
             _clothingadvice.SetDailyClothingType(forecast);
-            List<Clothing> x = _clothingadvice.DailyGetClothingBasedOnType(_clothingadvice.dailyClothingType);
-            foreach(Clothing i in x)
-            {
-                Console.WriteLine(i.clothingDescription);
-            }
+            List<List<Clothing>> x = _clothingadvice.GetClothingBasedOnType(_clothingadvice.dailyClothingType);
+            x[0][0].clothingDescription.Should().Be("Vest");
+            
         }
+        [TestCase("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m", 52.52)]
 
+        public void TestImportFromApiHourlyLatitude(string url, double lat)
+        {
+            var forecast = ImportFromApi.ImportForecastHourly(url).GetAwaiter().GetResult();
+            _clothingadvice.SetHourlyClothingType(forecast);
+            List<List<Clothing>> x = _clothingadvice.GetClothingBasedOnType(_clothingadvice.hourlyClothingType);
+            x[0][0].clothingDescription.Should().Be("Jumper");
+        }
 
     }
 }
