@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using WeatherCareAPI.Models;
 using WeatherCareAPI.Services;
+using WeatherCareAPI.Models.Json;
+using WeatherCareAPI.Helpers;
 
 namespace WeatherCareAPI.Controllers
 {
@@ -8,11 +10,6 @@ namespace WeatherCareAPI.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IWeatherForecastService _weatherForecastService;
 
@@ -22,17 +19,17 @@ namespace WeatherCareAPI.Controllers
             _weatherForecastService = weatherForecastService;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("{cityName}")]
+        [Route("/Daily")]
+        public ActionResult<IEnumerable<ForecastDaily>> GetDailyForecastByCity(string cityName)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var foreCastDaily = ImportFromApi.ImportForecastDaily("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum");
+            
+            return Ok(foreCastDaily);
         }
+
+
+
 
         [HttpGet("DB")]
         public ActionResult<IEnumerable<City>> GetCities()

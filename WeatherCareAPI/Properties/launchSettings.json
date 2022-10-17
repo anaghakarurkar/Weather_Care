@@ -4,15 +4,15 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:49754",
-      "sslPort": 44388
+      "applicationUrl": "http://localhost:36145",
+      "sslPort": 44353
     }
   },
   "profiles": {
     "WeatherCareAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:18688;http://localhost:7084",
+      "applicationUrl": "https://localhost:7225;http://localhost:5055",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
