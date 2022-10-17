@@ -9,29 +9,31 @@ namespace WeatherCareAPI.Models
         // List of clothing 
         public List<Clothing> clothingSuggestions = new List<Clothing>()
         {
-            new Clothing("C1","Cold","Beanie"),
-            new Clothing("C2","Cold","Sweater"),
-            new Clothing("C3","Cold","Fleece jacket"),
-            new Clothing("C4","Cold","Mittens"),
-            new Clothing("C5","Cold","Scarf"),
-            new Clothing("C6","Cold","Cardigan"),
-            new Clothing("C7","Cold","Earmuffs"),
-            new Clothing("C8","Cold","Winter Jacket"),
-            new Clothing("C9","Cold","Long-sleeve top"),
-            new Clothing("C10","Hot","Vest"),
-            new Clothing("C11","Hot","Shorts"),
-            new Clothing("C12","Hot","Polo"),
-            new Clothing("C13","Hot","T-shirt"),
-            new Clothing("C14","Hot","Slippers"),
-            new Clothing("C15","Hot","Cap"),
-            new Clothing("C15","Wet","Raincoat"),
-            new Clothing("C15","V.Wet","Umbrella"),
-            new Clothing("C15","Windy","Windbreaker"),
-            new Clothing("C15","Windy","Scarf"),
-            new Clothing("C15","Windy","Cardigan"),
-            new Clothing("C16","Cold","Scarf"),
-            new Clothing("C17","Mild","Long Sleeve Top"),
-            new Clothing("C19","Mild","Light Trousers")
+            new Clothing("Cold","Beanie"),
+            new Clothing("Cold","Sweater"),
+            new Clothing("Cold","Fleece jacket"),
+            new Clothing("Cold","Mittens"),
+            new Clothing("Cold","Scarf"),
+            new Clothing("Cold","Cardigan"),
+            new Clothing("Cold","Earmuffs"),
+            new Clothing("Cold","Winter Jacket"),
+            new Clothing("Cold","Long-sleeve top"),
+            new Clothing("Hot","Vest"),
+            new Clothing("Hot","Shorts"),
+            new Clothing("Hot","Polo"),
+            new Clothing("Hot","T-shirt"),
+            new Clothing("Hot","Slippers"),
+            new Clothing("Hot","Cap"),
+            new Clothing("Wet","Raincoat"),
+            new Clothing("Wet","Umbrella"),
+            new Clothing("V.Wet","Umbrella"),
+            new Clothing("V.Wet","Heavy RainCoat"),
+            new Clothing("V.Wet","Wellingtons"),
+            new Clothing("Windy","Windbreaker"),
+            new Clothing("Mild","Jumper"),
+            new Clothing("Mild","Fleece"),
+            new Clothing("Mild","Long Sleeve Top"),
+            new Clothing("Mild","Light Trousers")
 
 
           };
@@ -57,7 +59,7 @@ namespace WeatherCareAPI.Models
                     case 0:
                         if (dailyForecast.daily.temperature_2m_max[i]> 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
 
@@ -65,35 +67,35 @@ namespace WeatherCareAPI.Models
                     case 1:
                         if (dailyForecast.daily.temperature_2m_max[i] > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 2:
                         if (dailyForecast.daily.temperature_2m_max[i] > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 3:
                         if (dailyForecast.daily.temperature_2m_max[i] > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 45:
                         if (dailyForecast.daily.temperature_2m_max[i] > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 48:
                         if (dailyForecast.daily.temperature_2m_max[i] > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
@@ -148,14 +150,14 @@ namespace WeatherCareAPI.Models
                     case 95:
                         if (dailyForecast.daily.temperature_2m_max[i] > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 96:
                         if (dailyForecast.daily.temperature_2m_max[i] > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
@@ -163,7 +165,7 @@ namespace WeatherCareAPI.Models
                     case 99:
                         if (dailyForecast.daily.temperature_2m_max[i] > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.weathercode[i] > 10)
+                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
@@ -174,7 +176,7 @@ namespace WeatherCareAPI.Models
 
             
         }
-        public void SetHourlyClothingTypeHourly(ForecastHourly hourlyForecast)
+        public void SetHourlyClothingType(ForecastHourly hourlyForecast)
         {
 
 
@@ -187,7 +189,7 @@ namespace WeatherCareAPI.Models
                     case 0:
                         if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
 
@@ -195,35 +197,35 @@ namespace WeatherCareAPI.Models
                     case 1:
                         if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
                         break;
                     case 2:
                         if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
                         break;
                     case 3:
                         if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
                         break;
                     case 45:
                         if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
                         break;
                     case 48:
                         if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
                         break;
@@ -278,14 +280,14 @@ namespace WeatherCareAPI.Models
                     case 95:
                         if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
                         break;
                     case 96:
                         if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
                         break;
@@ -293,7 +295,7 @@ namespace WeatherCareAPI.Models
                     case 99:
                          if (hourlyForecast.hourly.temperature_2m[i] > 20)
                         { hourlyClothingType.Add("Hot"); }
-                        else if (hourlyForecast.hourly.weathercode[i] > 10)
+                        else if (hourlyForecast.hourly.temperature_2m[i] > 10)
                             hourlyClothingType.Add("Mild");
                         else hourlyClothingType.Add("Cold");
                         break;
@@ -304,21 +306,20 @@ namespace WeatherCareAPI.Models
 
 
         }
-        public List<Clothing> DailyGetClothingBasedOnType(List<string> dailyClothingType)
+        public List<List<Clothing>> GetClothingBasedOnType(List<string> clothingType)
         {
-            List<Clothing> dailyClothing = new List<Clothing>();
-            foreach (string clothingtype in dailyClothingType)
+            List<List<Clothing>> clothingAdvice = new List<List<Clothing>>();
+            foreach (string clothingtype in clothingType)
             {
                 var clothingSuggestion =
                 from clothing in clothingSuggestions
                 where clothing.type == clothingtype
                 select clothing;
-                dailyClothing = clothingSuggestion.ToList();
+                clothingAdvice.Add(clothingSuggestion.ToList());
 
             }
-            return dailyClothing;
+            return clothingAdvice;
         }
-
     }
 }
 
