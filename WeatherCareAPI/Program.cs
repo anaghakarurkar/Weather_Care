@@ -12,9 +12,18 @@ builder.Services.AddScoped<IWeatherCareService, WeatherCareService>();
 builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("WeatherCareAPI");
 
-// connect to the MySQL database
-builder.Services.AddDbContext<WeatherContext>(option =>
-option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+if (builder.Environment.EnvironmentName == "Testing")
+{
+    // in test environment use a fresh in-memory DB
+    builder.Services.AddDbContext<WeatherContext>(option =>
+    option.UseInMemoryDatabase("WeatherCareDB"));
+}
+else
+{
+    // connect to the MySQL database
+    builder.Services.AddDbContext<WeatherContext>(option =>
+    option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+}
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
