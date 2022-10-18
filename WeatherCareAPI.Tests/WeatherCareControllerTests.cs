@@ -56,6 +56,21 @@ public class WeatherCareControllerTests
         result.Should().BeOfType(typeof(ActionResult<IEnumerable<DisplayClothingAdviceDaily>>));
     }
 
+    [Test]
+    public void GetAllCities_Should_Return_All_Cities()
+    {
+        _mockWeatherCareService.Setup(b => b.GetAllCities()).Returns(GetTestCities());
+
+        //Act
+        var result = _controller.GetCities();
+
+        //Assert
+
+        result.Should().BeOfType(typeof(ActionResult<IEnumerable<City>>));
+        result.Value.Should().BeEquivalentTo(GetTestCities());
+        result.Value.Count().Should().Be(2);
+    }
+
     [OneTimeTearDown]
     public void CleanUp()
     {
@@ -86,6 +101,24 @@ public class WeatherCareControllerTests
 
         context.CityInfo.AddRange(cities);
         context.SaveChanges();
+    }
+
+    private static List<City> GetTestCities()
+    {
+        return new List<City>
+        {
+            new City() { Id = 28143, EnglishName = "Dhaka",
+                TimeZoneCode = "BDT",
+                GeoPositionLatitude = 23.71f,
+                GeoPositionLongitude = 90.407f
+            },
+            new City() { Id = 113487,
+                EnglishName ="Kinshasa",
+                TimeZoneCode = "WAT",
+                GeoPositionLatitude = -4.316f,
+                GeoPositionLongitude =  15.298f
+            }
+        };
     }
 }
 
