@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using WeatherCareAPI.Models.Json;
+using WeatherCareAPI.Models.Display;
 
 namespace WeatherCareAPI.Services
 {
@@ -30,5 +31,27 @@ namespace WeatherCareAPI.Services
             location.longitude = city.GeoPositionLongitude;
             return location;
         }
+
+        public DisplayClothingAdviceDaily GetClothingAdviceDaily (ForecastDaily forecastDaily)
+        {
+            var displayClothingAdviceDaily = new DisplayClothingAdviceDaily();
+            for (int i = 0; i < forecastDaily.daily.time.Length; i++)
+            {
+                var weatherAdvice = new WeatherAdvice();
+                var clothingAdvice = new ClothingAdvice();
+                clothingAdvice.SetDailyClothingType(forecastDaily);
+                var oneDay = new DisplayOneDay(
+                    forecastDaily.daily.time[i],
+                    (forecastDaily.daily.temperature_2m_max[i] + forecastDaily.daily.temperature_2m_min[i]) / 2,
+                    weatherAdvice.weatherDescription[forecastDaily.daily.weathercode[i]],
+                    clothingAdvice.GetClothingBasedOnType(clothingAdvice.dailyClothingType)[i]
+                    );
+                ; 
+                displayClothingAdviceDaily.DisplayOneDayList.Add(oneDay);
+            }
+            return displayClothingAdviceDaily;          
+        }
+
+
     }
 }

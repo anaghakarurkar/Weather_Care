@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using WeatherCareAPI.Models;
 using WeatherCareAPI.Services;
 using WeatherCareAPI.Models.Json;
+using WeatherCareAPI.Models.Display;
 using WeatherCareAPI.Helpers;
 
 namespace WeatherCareAPI.Controllers
@@ -27,6 +28,14 @@ namespace WeatherCareAPI.Controllers
             var foreCastDaily = ImportFromApi.ImportForecastDaily($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum").GetAwaiter().GetResult();
             return Ok(foreCastDaily);
         }
+        [HttpGet("dailyAdvice/{cityName}")]
+        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetDailyAdviceByCity(string cityName)
+        {
+            Forecast location = _weatherForecastService.GetLocationByCity(cityName);
+            var foreCastDaily = ImportFromApi.ImportForecastDaily($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum").GetAwaiter().GetResult();
+            var displayClothingAdviceDaily = _weatherForecastService.GetClothingAdviceDaily(foreCastDaily);
+            return Ok(displayClothingAdviceDaily);
+        }
 
         //  /WeatherForecast/hourly/{cityName}
         [HttpGet("hourly/{cityName}")]
@@ -39,9 +48,9 @@ namespace WeatherCareAPI.Controllers
 
         //  /WeatherForecast/geolocation?latitude=52.52&longitude=14.43
         [HttpGet("geolocation")]
-        public ActionResult<IEnumerable<DisplayClothingAdvice>> SuggestClothingUsingGeoLocation(double latitude, double longitude)
+        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> SuggestClothingUsingGeoLocation(double latitude, double longitude)
         {
-            return Ok(new DisplayClothingAdvice());
+            return Ok(new DisplayClothingAdviceDaily());
         }
 
 

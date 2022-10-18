@@ -306,15 +306,15 @@ namespace WeatherCareAPI.Models
 
 
         }
-        public List<List<Clothing>> GetClothingBasedOnType(List<string> clothingType)
+        public List<List<string>> GetClothingBasedOnType(List<string> clothingType)
         {
-            List<List<Clothing>> clothingAdvice = new List<List<Clothing>>();
+            List<List<string>> clothingAdvice = new List<List<string>>();
             foreach (string clothingtype in clothingType)
             {
                 var clothingSuggestion =
                 from clothing in clothingSuggestions
                 where clothing.type == clothingtype
-                select clothing;
+                select clothing.clothingDescription;
                 clothingAdvice.Add(clothingSuggestion.ToList());
 
             }
