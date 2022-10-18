@@ -4,6 +4,7 @@ using WeatherCareAPI.Services;
 using WeatherCareAPI.Models.Json;
 using WeatherCareAPI.Models.Display;
 using WeatherCareAPI.Helpers;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace WeatherCareAPI.Controllers
 {
