@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using WeatherCareAPI.Models;
 using WeatherCareAPI.Services;
 using WeatherCareAPI.Models.Json;
+using WeatherCareAPI.Models.Display;
 using WeatherCareAPI.Helpers;
 
 namespace WeatherCareAPI.Controllers
@@ -39,9 +40,9 @@ namespace WeatherCareAPI.Controllers
 
         //  /WeatherForecast/geolocation?latitude=52.52&longitude=14.43
         [HttpGet("geolocation")]
-        public ActionResult<IEnumerable<DisplayClothingAdvice>> SuggestClothingUsingGeoLocation(double latitude, double longitude)
+        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> SuggestClothingUsingGeoLocation(double latitude, double longitude)
         {
-            return Ok(new DisplayClothingAdvice());
+            return Ok(new DisplayClothingAdviceDaily());
         }
 
 
