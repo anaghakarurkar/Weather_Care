@@ -38,12 +38,15 @@ namespace WeatherCareAPI.Services
             for (int i = 0; i < forecastDaily.daily.time.Length; i++)
             {
                 var weatherAdvice = new WeatherAdvice();
+                var clothingAdvice = new ClothingAdvice();
+                clothingAdvice.SetDailyClothingType(forecastDaily);
                 var oneDay = new DisplayOneDay(
                     forecastDaily.daily.time[i],
                     (forecastDaily.daily.temperature_2m_max[i] + forecastDaily.daily.temperature_2m_min[i]) / 2,
                     weatherAdvice.weatherDescription[forecastDaily.daily.weathercode[i]],
-                    "clothes",
-                    "advice");
+                    clothingAdvice.GetClothingBasedOnType(clothingAdvice.dailyClothingType)[i]
+                    );
+                ; 
                 displayClothingAdviceDaily.DisplayOneDayList.Add(oneDay);
             }
             return displayClothingAdviceDaily;          
