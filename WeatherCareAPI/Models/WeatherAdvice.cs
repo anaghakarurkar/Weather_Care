@@ -43,11 +43,9 @@ namespace WeatherCareAPI.Models
 
         void WeatherCodeDescriptionDaily(ForecastDaily dailyForecast)
         {
-
             foreach (int x in dailyForecast.daily.weathercode)
             {
                 Console.WriteLine("The Weather Description is :" + weatherDescription[x]);
-
             }
         }
 
