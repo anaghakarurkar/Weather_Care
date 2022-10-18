@@ -5,7 +5,7 @@ using WeatherCareAPI.Models.Json;
 
 namespace WeatherCareAPI.Services
 {
-    public interface IWeatherForecastService
+    public interface IWeatherCareService
     {
         List<City> GetAllCities();
         Forecast GetLocationByCity(string cityName);

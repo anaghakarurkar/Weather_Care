@@ -7,11 +7,11 @@ using WeatherCareAPI.Models.Display;
 
 namespace WeatherCareAPI.Services
 {
-    public class WeatherForecastService : IWeatherForecastService
+    public class WeatherCareService : IWeatherCareService
     {
         private readonly WeatherContext _context;
 
-        public WeatherForecastService(WeatherContext context)
+        public WeatherCareService(WeatherContext context)
         {
             _context = context;
         }
