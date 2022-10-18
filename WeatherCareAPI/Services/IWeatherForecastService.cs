@@ -1,5 +1,6 @@
 ﻿using System;
 using WeatherCareAPI.Models;
+using WeatherCareAPI.Models.Display;
 using WeatherCareAPI.Models.Json;
 
 namespace WeatherCareAPI.Services
@@ -8,5 +9,6 @@ namespace WeatherCareAPI.Services
     {
         List<City> GetAllCities();
         Forecast GetLocationByCity(string cityName);
+        DisplayClothingAdviceDaily GetClothingAdviceDaily(ForecastDaily forecastDaily);
     }
 }
