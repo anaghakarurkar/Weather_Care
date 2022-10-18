@@ -10,5 +10,6 @@ namespace WeatherCareAPI.Services
         List<City> GetAllCities();
         Forecast GetLocationByCity(string cityName);
         DisplayClothingAdviceDaily GetClothingAdviceDaily(ForecastDaily forecastDaily);
+        DisplayClothingAdviceHourly GetClothingAdviceHourly(ForecastHourly forecastHourly);
     }
 }

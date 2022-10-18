@@ -51,6 +51,25 @@ namespace WeatherCareAPI.Services
             }
             return displayClothingAdviceDaily;          
         }
+        public DisplayClothingAdviceHourly GetClothingAdviceHourly(ForecastHourly forecastHourly)
+        {
+            var displayClothingAdviceHourly = new DisplayClothingAdviceHourly();
+            for (int i = 0; i < forecastHourly.hourly.time.Length; i++)
+            {
+                var weatherAdvice = new WeatherAdvice();
+                var clothingAdvice = new ClothingAdvice();
+                clothingAdvice.SetHourlyClothingType(forecastHourly);
+                var oneHour = new DisplayOneHour(
+                    forecastHourly.hourly.time[i],
+                    forecastHourly.hourly.temperature_2m[i],
+                    weatherAdvice.weatherDescription[forecastHourly.hourly.weathercode[i]],
+                    clothingAdvice.GetClothingBasedOnType(clothingAdvice.hourlyClothingType)[i]
+                    );
+                ;
+                displayClothingAdviceHourly.DisplayOneHourList.Add(oneHour);
+            }
+            return displayClothingAdviceHourly;
+        }
 
 
     }

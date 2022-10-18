@@ -45,6 +45,14 @@ namespace WeatherCareAPI.Controllers
             var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
             return Ok(foreCastHourly);
         }
+        [HttpGet("hourlyAdvice/{cityName}")]
+        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetHourlyAdviceByCity(string cityName)
+        {
+            Forecast location = _weatherForecastService.GetLocationByCity(cityName);
+            var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
+            var displayClothingAdviceHourly = _weatherForecastService.GetClothingAdviceHourly(foreCastHourly);
+            return Ok(displayClothingAdviceHourly);
+        }
 
         //  /WeatherForecast/geolocation?latitude=52.52&longitude=14.43
         [HttpGet("geolocation")]
