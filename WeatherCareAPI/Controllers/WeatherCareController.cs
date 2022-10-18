@@ -48,9 +48,9 @@ namespace WeatherCareAPI.Controllers
         [HttpGet("hourlyAdvice/{cityName}")]
         public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetHourlyAdviceByCity(string cityName)
         {
-            Forecast location = _weatherForecastService.GetLocationByCity(cityName);
+            Forecast location = _weatherCareService.GetLocationByCity(cityName);
             var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
-            var displayClothingAdviceHourly = _weatherForecastService.GetClothingAdviceHourly(foreCastHourly);
+            var displayClothingAdviceHourly = _weatherCareService.GetClothingAdviceHourly(foreCastHourly);
             return Ok(displayClothingAdviceHourly);
         }
 
