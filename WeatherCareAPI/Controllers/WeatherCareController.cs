@@ -95,7 +95,7 @@ namespace WeatherCareAPI.Controllers
             return Ok(displayClothingAdviceCurrent);
         }
 
-
+        /*
         [HttpGet("DB")]
         public ActionResult<IEnumerable<City>> GetCities()
         {
