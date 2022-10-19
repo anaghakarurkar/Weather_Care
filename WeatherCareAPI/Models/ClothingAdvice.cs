@@ -57,7 +57,7 @@ namespace WeatherCareAPI.Models
                 {
                     
                     case 0:
-                        if (dailyForecast.daily.temperature_2m_max[i]> 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i]+ dailyForecast.daily.temperature_2m_min[i])/2 > 20)
                         { dailyClothingType.Add("Hot"); }
                         else if (dailyForecast.daily.temperature_2m_max[i] > 10)
                             dailyClothingType.Add("Mild");
@@ -65,37 +65,37 @@ namespace WeatherCareAPI.Models
 
                         break;
                     case 1:
-                        if (dailyForecast.daily.temperature_2m_max[i] > 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 2:
-                        if (dailyForecast.daily.temperature_2m_max[i] > 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 3:
-                        if (dailyForecast.daily.temperature_2m_max[i] > 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i])/2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 45:
-                        if (dailyForecast.daily.temperature_2m_max[i] > 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i])/2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i])/2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 48:
-                        if (dailyForecast.daily.temperature_2m_max[i] > 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i])/2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
@@ -148,24 +148,24 @@ namespace WeatherCareAPI.Models
                         dailyClothingType.Add("Cold");
                         break;
                     case 95:
-                        if (dailyForecast.daily.temperature_2m_max[i] > 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
                     case 96:
-                        if (dailyForecast.daily.temperature_2m_max[i] > 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
 
                     case 99:
-                        if (dailyForecast.daily.temperature_2m_max[i] > 20)
+                        if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) / 2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
                         break;
