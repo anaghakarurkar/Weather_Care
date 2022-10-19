@@ -101,6 +101,7 @@ namespace WeatherCareAPI.Controllers
         {
             return _weatherCareService.GetAllCities();
         }
+        */
         
     }
 }
