@@ -37,8 +37,8 @@ public class WeatherCareControllerTests
     }
 
     [Test]
-    public void GetDailyAdviceByCity_Should_Return_Clothing_Advice_Using_City()
-    {
+    public void GetDailyAdviceByCity_Should_Return_Object_Of_Type_DisplayClothingAdviceDaily()
+    { 
         ////Arange
         Forecast location = new()
         {

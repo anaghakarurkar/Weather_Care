@@ -55,17 +55,26 @@ namespace WeatherCareAPI.Controllers
             return Ok(displayClothingAdviceHourly);
         }
 
-        //  /WeatherForecast/geolocation?latitude=52.52&longitude=14.43
-        [HttpGet("geolocation")]
-        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> SuggestClothingUsingGeoLocation(double latitude, double longitude)
+        //  /WeatherForecast/daily/geolocation?latitude=52.52&longitude=14.43
+        [HttpGet("daily/geolocation")]
+        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> SuggestDailyClothingUsingGeoLocation(double latitude, double longitude)
         {
-            return Ok(new DisplayClothingAdviceDaily());
+            var foreCastDaily = ImportFromApi.ImportForecastDaily($"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum").GetAwaiter().GetResult();
+            var displayClothingAdviceDaily = _weatherCareService.GetClothingAdviceDaily(foreCastDaily);
+            return Ok(displayClothingAdviceDaily);
+
         }
 
 
+        //  /WeatherForecast/hourly/geolocation?latitude=52.52&longitude=14.43
+        [HttpGet("hourly/geolocation")]
+        public ActionResult<IEnumerable<DisplayClothingAdviceHourly>> SuggestHourlyClothingUsingGeoLocation(double latitude, double longitude)
+        {
+            var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
+            var displayClothingAdviceHourly = _weatherCareService.GetClothingAdviceHourly(foreCastHourly);
+            return Ok(displayClothingAdviceHourly);
 
-
-
+        }
 
 
         [HttpGet("DB")]
