@@ -71,6 +71,21 @@ namespace WeatherCareAPI.Services
             return displayClothingAdviceHourly;
         }
 
+        public DisplayOneHour GetClothingAdviceCurrentHour(ForecastHourly forecastHourly)
+        {
+            int hour = Convert.ToInt32(DateTime.Now.ToString("HH"));
+            var weatherAdvice = new WeatherAdvice();
+            var clothingAdvice = new ClothingAdvice();
+            clothingAdvice.SetHourlyClothingType(forecastHourly);
+            var oneHour = new DisplayOneHour(
+                    forecastHourly.hourly.time[hour],
+                    forecastHourly.hourly.temperature_2m[hour],
+                    weatherAdvice.weatherDescription[forecastHourly.hourly.weathercode[hour]],
+                    clothingAdvice.GetClothingBasedOnType(clothingAdvice.hourlyClothingType)[hour]
+                    );
+                ;
+            return oneHour;
+        }
 
     }
 }
