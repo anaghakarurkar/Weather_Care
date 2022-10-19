@@ -78,6 +78,23 @@ namespace WeatherCareAPI.Controllers
 
         }
 
+        [HttpGet("currentAdvice/{cityName}")]
+        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetCurrentyAdviceByCity(string cityName)
+        {
+            Forecast location = _weatherCareService.GetLocationByCity(cityName);
+            var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
+            var displayClothingAdviceCurrent = _weatherCareService.GetClothingAdviceCurrentHour(foreCastHourly);
+            return Ok(displayClothingAdviceCurrent);
+        }
+
+        [HttpGet("currentAdvice/geolocation")]
+        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetCurrentyAdviceByGeolocation(double latitude, double longitude)
+        {
+            var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
+            var displayClothingAdviceCurrent = _weatherCareService.GetClothingAdviceCurrentHour(foreCastHourly);
+            return Ok(displayClothingAdviceCurrent);
+        }
+
         /*
         [HttpGet("DB")]
         public ActionResult<IEnumerable<City>> GetCities()
@@ -85,5 +102,6 @@ namespace WeatherCareAPI.Controllers
             return _weatherCareService.GetAllCities();
         }
         */
+        
     }
 }
