@@ -55,7 +55,7 @@ public class WeatherCareControllerTests
         //Assert
         result.Should().BeOfType(typeof(ActionResult<IEnumerable<DisplayClothingAdviceDaily>>));
     }
-
+    /*
     [Test]
     public void GetAllCities_Should_Return_All_Cities()
     {
@@ -69,7 +69,7 @@ public class WeatherCareControllerTests
         result.Should().BeOfType(typeof(ActionResult<IEnumerable<City>>));
         result.Value.Should().BeEquivalentTo(GetTestCities());
         result.Value.Count().Should().Be(2);
-    }
+    }*/
 
     [OneTimeTearDown]
     public void CleanUp()
