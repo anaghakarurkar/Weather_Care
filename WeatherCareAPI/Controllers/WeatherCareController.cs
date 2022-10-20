@@ -85,7 +85,7 @@ namespace WeatherCareAPI.Controllers
         }
 
         [HttpGet("currentAdvice/{cityName}")]
-        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetCurrentyAdviceByCity(string cityName)
+        public ActionResult<IEnumerable<DisplayClothingAdviceHourly>> GetCurrentAdviceByCity(string cityName)
         {
             Forecast location = _weatherCareService.GetLocationByCity(cityName);
             if (location == null) return BadRequest(Utilities.errorMsg(cityName));
@@ -95,7 +95,7 @@ namespace WeatherCareAPI.Controllers
         }
 
         [HttpGet("currentAdvice/geolocation")]
-        public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetCurrentyAdviceByGeolocation(double latitude, double longitude)
+        public ActionResult<IEnumerable<DisplayClothingAdviceHourly>> GetCurrentAdviceByGeolocation(double latitude, double longitude)
         {
             var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
             var displayClothingAdviceCurrent = _weatherCareService.GetClothingAdviceCurrentHour(foreCastHourly);
