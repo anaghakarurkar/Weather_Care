@@ -22,9 +22,12 @@ namespace WeatherCareAPI.Services
             return cities;
         }
 
-        public Forecast GetLocationByCity(string cityName)
+        public Forecast? GetLocationByCity(string cityName)
         {
             Forecast location = new Forecast();
+            if (!CityExists(cityName))
+                return null;
+
             var city = GetAllCities().Where(city => city.EnglishName.ToLower()==cityName.ToLower()).First();
 
             location.latitude = city.GeoPositionLatitude;
@@ -87,5 +90,9 @@ namespace WeatherCareAPI.Services
             return oneHour;
         }
 
+        public bool CityExists(string cityName)
+        {
+            return _context.CityInfo.Any(b => b.EnglishName == cityName);
+        }
     }
 }
