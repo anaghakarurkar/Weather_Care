@@ -12,5 +12,6 @@ namespace WeatherCareAPI.Services
         DisplayClothingAdviceDaily GetClothingAdviceDaily(ForecastDaily forecastDaily);
         DisplayClothingAdviceHourly GetClothingAdviceHourly(ForecastHourly forecastHourly);
         public DisplayOneHour GetClothingAdviceCurrentHour(ForecastHourly forecastHourly);
+        public bool ValidateLongitudeLatitude(double latitude, double longitude);
     }
 }
