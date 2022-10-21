@@ -94,5 +94,10 @@ namespace WeatherCareAPI.Services
         {
             return _context.CityInfo.Any(b => b.EnglishName == cityName);
         }
+
+        public bool ValidateLongitudeLatitude(double latitude, double longitude)
+        {
+            return (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180);
+        }
     }
 }
