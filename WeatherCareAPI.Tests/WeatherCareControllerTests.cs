@@ -55,6 +55,28 @@ public class WeatherCareControllerTests
         //Assert
         result.Should().BeOfType(typeof(ActionResult<IEnumerable<DisplayClothingAdviceDaily>>));
     }
+
+    [Test]
+    public void TestGetCurrentAdviceByCity_Should_Return_Object_Of_Type_DisplayClothingAdviceHourly()
+    {
+        ////Arange
+        Forecast location = new()
+        {
+            latitude = 23.71,
+            longitude = 90.407
+        };
+        string cityName = "Dhaka";
+
+        _mockWeatherCareService.Setup(b => b.GetLocationByCity(cityName)).Returns(location);
+
+        //Act
+        var result = _controller.GetCurrentAdviceByCity(cityName);
+
+
+        //Assert
+        result.Should().BeOfType(typeof(ActionResult<IEnumerable<DisplayClothingAdviceHourly>>));
+    }
+
     /*
     [Test]
     public void GetAllCities_Should_Return_All_Cities()
