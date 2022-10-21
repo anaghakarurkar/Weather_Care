@@ -25,39 +25,28 @@ namespace WeatherCareAPI.Controllers
             _weatherCareService = weatherCareService;
         }
 
-        /* /WeatherForecast/daily/Mumbai
-        [HttpGet("daily/{cityName}")]
-        public ActionResult<IEnumerable<ForecastDaily>> GetDailyForecastByCity(string cityName)
-        {
-            Forecast location = _weatherCareService.GetLocationByCity(cityName);
-            var foreCastDaily = ImportFromApi.ImportForecastDaily($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum").GetAwaiter().GetResult();
-            return Ok(foreCastDaily);
-        }
-        */
+       
         [HttpGet("dailyAdvice/{cityName}")]
         public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetDailyAdviceByCity(string cityName)
         {
             Forecast location = _weatherCareService.GetLocationByCity(cityName);
-            if (location == null) return BadRequest(Utilities.errorMsg(cityName));
+         
+            if (location == null) 
+                return BadRequest(Utilities.errorMsg(cityName));
+
             var foreCastDaily = ImportFromApi.ImportForecastDaily($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&timezone=GMT&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,precipitation_sum").GetAwaiter().GetResult();
             var displayClothingAdviceDaily = _weatherCareService.GetClothingAdviceDaily(foreCastDaily);
             return Ok(displayClothingAdviceDaily);
         }
 
-        /*  /WeatherForecast/hourly/{cityName}
-        [HttpGet("hourly/{cityName}")]
-        public ActionResult<IEnumerable<ForecastHourly>> GetHourlyForecastByCity(string cityName)
-        {
-            Forecast location = _weatherCareService.GetLocationByCity(cityName);
-            var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
-            return Ok(foreCastHourly);
-        }
-        */
+        
         [HttpGet("hourlyAdvice/{cityName}")]
         public ActionResult<IEnumerable<DisplayClothingAdviceDaily>> GetHourlyAdviceByCity(string cityName)
         {
             Forecast location = _weatherCareService.GetLocationByCity(cityName);
-            if (location == null) return BadRequest(Utilities.errorMsg(cityName));
+            
+            if (location == null) 
+                return BadRequest(Utilities.errorMsg(cityName));
             var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
             var displayClothingAdviceHourly = _weatherCareService.GetClothingAdviceHourly(foreCastHourly);
             return Ok(displayClothingAdviceHourly);
@@ -88,7 +77,10 @@ namespace WeatherCareAPI.Controllers
         public ActionResult<IEnumerable<DisplayClothingAdviceHourly>> GetCurrentAdviceByCity(string cityName)
         {
             Forecast location = _weatherCareService.GetLocationByCity(cityName);
-            if (location == null) return BadRequest(Utilities.errorMsg(cityName));
+            
+            if (location == null) 
+                return BadRequest(Utilities.errorMsg(cityName));
+
             var foreCastHourly = ImportFromApi.ImportForecastHourly($"https://api.open-meteo.com/v1/forecast?latitude={location.latitude}&longitude={location.longitude}&hourly=temperature_2m,weathercode,relativehumidity_2m,windspeed_10m").GetAwaiter().GetResult();
             var displayClothingAdviceCurrent = _weatherCareService.GetClothingAdviceCurrentHour(foreCastHourly);
             return Ok(displayClothingAdviceCurrent);
@@ -102,12 +94,5 @@ namespace WeatherCareAPI.Controllers
             return Ok(displayClothingAdviceCurrent);
         }
 
-        /*
-        [HttpGet("DB")]
-        public ActionResult<IEnumerable<City>> GetCities()
-        {
-            return _weatherCareService.GetAllCities();
-        }
-        */
     }
 }
