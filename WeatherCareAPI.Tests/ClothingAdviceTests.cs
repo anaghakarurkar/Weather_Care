@@ -15,7 +15,7 @@ namespace WeatherCareAPI.Tests
     {
         private DateTime currentDate;
         private ClothingAdvice _clothingadvice;
-        private ClothingAdvice testclothingadvice;
+       
 
 
         [SetUp]
