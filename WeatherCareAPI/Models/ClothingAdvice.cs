@@ -59,7 +59,7 @@ namespace WeatherCareAPI.Models
                     case 0:
                         if ((dailyForecast.daily.temperature_2m_max[i]+ dailyForecast.daily.temperature_2m_min[i])/2 > 20)
                         { dailyClothingType.Add("Hot"); }
-                        else if (dailyForecast.daily.temperature_2m_max[i] > 10)
+                        else if ((dailyForecast.daily.temperature_2m_max[i] + dailyForecast.daily.temperature_2m_min[i]) /2 > 10)
                             dailyClothingType.Add("Mild");
                         else dailyClothingType.Add("Cold");
 
