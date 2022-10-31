@@ -13,3 +13,28 @@ The Advice includes the following:<br>
 <li>Temperature</li>
 <li>Weather Type Summary (Rainy, Snowing, Thunderstorm…)</li>
 <li>Clothing Suggestions </li>
+
+## Running the Unit Tests
+Fork this repo to your Github and then clone the forked version of this repo.
+You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory, run:
+dotnet test
+
+
+## Weather API End Points:
+Get clothing daily advice using top 150 citynames:
+/WeatherCare/dailyAdvice/{cityname}
+
+Get clothing daily advice using latitude and longitude:
+/WeatherCare/dailyAdvice/geolocation?latitude={latitude}&longitude={longitude}
+
+Get clothing hourly advice using  top 150 citynames:
+/WeatherCare/hourlyAdvice/{cityname}
+
+Get clothing hourly advice using latitude and longitude:
+/WeatherCare/hourlyAdvice/geolocation?latitude={latitude}&longitude={longitude}
+
+Get clothing current advice using  top 150 citynames:
+/WeatherCare/currentAdvice/{cityname}
+
+Get clothing current advice using latitude and longitude:
+/WeatherCare/currentAdvice/geolocation?latitude={latitude}&longitude={longitude}
