@@ -34,23 +34,23 @@ Get clothing hourly advice using latitude and longitude:<br>
 /WeatherCare/hourlyAdvice/geolocation?latitude={latitude}&longitude={longitude}
 
 Get clothing current advice using  top 150 citynames:<br>
-/WeatherCare/currentAdvice/{cityname}
+/WeatherCare/currentAdvice/{cityname}<br>
 
 
-For example:   /WeatherCare/currentAdvice/london
-Response object: This endpoint will return responce object in JSON format.
+For example:   /WeatherCare/currentAdvice/london <br>
+Response object: This endpoint will return responce object in JSON format. <br>
 
-{
-  "time": "17:00",
-  "temperature": 15,
-  "weatherType": "Overcast",
-  "suggestedClothes": [
-    "Jumper",
-    "Fleece",
-    "Long Sleeve Top",
-    "Light Trousers"
-  ]
-}
+{<br>
+  "time": "17:00", <br>
+  "temperature": 15, <br>
+  "weatherType": "Overcast", <br>
+  "suggestedClothes": [ <br>
+    "Jumper", <br>
+    "Fleece", <br>
+    "Long Sleeve Top", <br>
+    "Light Trousers" <br>
+  ] <br>
+}<br>
 
 
 Get clothing current advice using latitude and longitude:<br>
