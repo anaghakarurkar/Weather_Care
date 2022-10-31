@@ -30,7 +30,7 @@ Get clothing daily advice using latitude and longitude:<br>
 Get clothing hourly advice using  top 150 citynames:<br>
 /WeatherCare/hourlyAdvice/{cityname}
 
-Get clothing hourly advice using latitude and longitude:
+Get clothing hourly advice using latitude and longitude:<br>
 /WeatherCare/hourlyAdvice/geolocation?latitude={latitude}&longitude={longitude}
 
 Get clothing current advice using  top 150 citynames:<br>
