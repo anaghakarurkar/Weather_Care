@@ -55,3 +55,12 @@ Response object: This endpoint will return responce object in JSON format. <br>
 
 Get clothing current advice using latitude and longitude:<br>
 /WeatherCare/currentAdvice/geolocation?latitude={latitude}&longitude={longitude}
+
+<img width="593" alt="Screenshot 2022-10-31 at 18 10 18" src="https://user-images.githubusercontent.com/108285095/199080659-0281e1fb-e550-4527-9355-f1c71c561bcb.png">
+
+<img width="624" alt="Screenshot 2022-10-31 at 18 12 13" src="https://user-images.githubusercontent.com/108285095/199080680-957602b8-fe31-4ae2-a4c0-22817d826ecd.png">
+
+<img width="605" alt="Screenshot 2022-10-31 at 18 15 01" src="https://user-images.githubusercontent.com/108285095/199080722-f261b286-c247-41ab-8ce9-066df2ba228a.png">
+
+<img width="603" alt="Screenshot 2022-10-31 at 18 15 08" src="https://user-images.githubusercontent.com/108285095/199080735-6cd2e4ed-55c3-4d78-9b56-9a6f67895649.png">
+
