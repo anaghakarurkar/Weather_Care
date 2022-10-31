@@ -15,9 +15,9 @@ The Advice includes the following:<br>
 <li>Clothing Suggestions </li>
 
 ## Running the Unit Tests
-Fork this repo to your Github and then clone the forked version of this repo.
-You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory, run:
-dotnet test
+Fork this repo to your Github and then clone the forked version of this repo.<br>
+You can run the unit tests in Visual Studio, or you can go to your terminal and inside the root of this directory, run: <br>
+dotnet test<br>
 
 
 ## Weather API End Points:
