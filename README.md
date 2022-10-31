@@ -21,20 +21,20 @@ dotnet test
 
 
 ## Weather API End Points:
-Get clothing daily advice using top 150 citynames:
+Get clothing daily advice using top 150 citynames:<br>
 /WeatherCare/dailyAdvice/{cityname}
 
-Get clothing daily advice using latitude and longitude:
+Get clothing daily advice using latitude and longitude:<br>
 /WeatherCare/dailyAdvice/geolocation?latitude={latitude}&longitude={longitude}
 
-Get clothing hourly advice using  top 150 citynames:
+Get clothing hourly advice using  top 150 citynames:<br>
 /WeatherCare/hourlyAdvice/{cityname}
 
 Get clothing hourly advice using latitude and longitude:
 /WeatherCare/hourlyAdvice/geolocation?latitude={latitude}&longitude={longitude}
 
-Get clothing current advice using  top 150 citynames:
+Get clothing current advice using  top 150 citynames:<br>
 /WeatherCare/currentAdvice/{cityname}
 
-Get clothing current advice using latitude and longitude:
+Get clothing current advice using latitude and longitude:<br>
 /WeatherCare/currentAdvice/geolocation?latitude={latitude}&longitude={longitude}
